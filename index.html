@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Gary Kocsis, protocol engineer and smart contract engineer. Explore Standby, RangeGuard, and selected Solidity security reviews."
+    />
+    <meta
+      property="og:title"
+      content="Gary Kocsis | Protocol & Smart Contract Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Solidity smart contracts, Uniswap v4 hooks, invariant-driven verification, and institutional trading infrastructure."
+    />
+    <meta property="og:type" content="website" />
+    <title>Gary Kocsis | Protocol Engineer</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #101914;
+        --panel: #16221b;
+        --ink: #f5f3df;
+        --muted: #becbbf;
+        --accent: #d2eb9b;
+        --line: #2c3b31;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          1rem/1.65 system-ui,
+          -apple-system,
+          sans-serif;
+      }
+      a {
+        color: var(--accent);
+        text-underline-offset: 0.22em;
+      }
+      a:hover {
+        color: #fff;
+      }
+      a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 5px;
+      }
+      .wrap {
+        width: min(100% - 2.5rem, 64rem);
+        margin-inline: auto;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-block: 1rem;
+      }
+      nav a {
+        text-decoration: none;
+      }
+      nav .name {
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem 1.25rem;
+        align-items: center;
+      }
+      .hero {
+        padding-block: clamp(2.75rem, 7vw, 5rem);
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.15;
+        margin: 0;
+        letter-spacing: -0.03em;
+      }
+      h1 {
+        font-size: clamp(2.4rem, 5vw, 3.75rem);
+        font-weight: 750;
+      }
+      h2 {
+        font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+        font-weight: 700;
+      }
+      h3 {
+        font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+        font-weight: 700;
+      }
+      .role {
+        font-size: clamp(1.05rem, 2vw, 1.25rem);
+        font-weight: 600;
+        color: var(--ink);
+        margin: 0.5rem 0 0.25rem;
+      }
+      .tech,
+      .eyebrow {
+        color: var(--accent);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.85rem;
+      }
+      .hero p:not(.tech) {
+        max-width: 42rem;
+      }
+      .tech {
+        margin-top: 0.35rem;
+      }
+      .hero .links {
+        margin-top: 1.35rem;
+      }
+      .cta {
+        display: inline-block;
+        background: var(--accent);
+        color: var(--bg);
+        padding: 0.45rem 0.85rem;
+        border-radius: 0.3rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .cta:hover {
+        color: var(--bg);
+        background: var(--ink);
+      }
+      section {
+        padding-block: clamp(2.25rem, 5vw, 3.75rem);
+        border-top: 1px solid var(--line);
+      }
+      .project {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+        gap: 1.25rem 2.75rem;
+        background: var(--panel);
+        margin-top: 1.4rem;
+        padding: clamp(1.25rem, 3.5vw, 2rem);
+        border: 1px solid var(--line);
+        border-radius: 0.5rem;
+      }
+      .project .eyebrow {
+        margin: 0 0 0.5rem;
+      }
+      .project p:first-child {
+        margin-top: 0;
+      }
+      .project .links {
+        grid-column: 1/-1;
+        border-top: 1px solid var(--line);
+        padding-top: 0.9rem;
+      }
+      p {
+        color: var(--muted);
+      }
+      strong {
+        color: var(--ink);
+      }
+      .split {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+        gap: 1.25rem 2.75rem;
+      }
+      .split p:first-child {
+        margin-top: 0;
+      }
+      .experience h3 {
+        font-size: 1.1rem;
+        letter-spacing: -0.01em;
+        margin: 1.6rem 0 0.35rem;
+      }
+      .experience h3:first-child {
+        margin-top: 0;
+      }
+      .experience p {
+        margin: 0.4rem 0;
+      }
+      .skip {
+        position: absolute;
+        left: 1rem;
+        top: -5rem;
+      }
+      .skip:focus {
+        top: 0.5rem;
+        background: var(--bg);
+        padding: 0.5rem;
+      }
+      @media (max-width: 700px) {
+        .project,
+        .split {
+          grid-template-columns: 1fr;
+        }
+        nav {
+          align-items: flex-start;
+          flex-wrap: wrap;
+        }
+        .project .links {
+          grid-column: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header>
+      <nav class="wrap" aria-label="Main navigation">
+        <a class="name" href="#main">Gary Kocsis</a>
+        <div class="links">
+          <a href="#selected-work">Work</a><a href="#approach">Approach</a
+          ><a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+    <main id="main" class="wrap">
+      <div class="hero">
+        <h1>Gary Kocsis</h1>
+        <p class="role">Protocol Engineer | Smart Contract Engineer</p>
+        <p class="tech">Solidity · EVM · DeFi · Uniswap v4 · Foundry</p>
+        <p>
+          I design and build Solidity smart contracts and DeFi protocols. My
+          background in institutional trading and financial systems shapes how I
+          define what a protocol should do, anticipate how it can fail, and test
+          the implementation.
+        </p>
+        <div class="links">
+          <a class="cta" href="#selected-work">Selected Work</a
+          ><a
+            href="./Gary_Kocsis_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Download Resume (PDF)</a
+          ><a
+            href="https://github.com/garykocsis"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          ><a
+            href="https://linkedin.com/in/gary-kocsis-0256666/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a href="mailto:gkocsis99@gmail.com">Email me</a>
+        </div>
+      </div>
+      <section id="selected-work" aria-labelledby="work-heading">
+        <h2 id="work-heading">Selected Work</h2>
+        <article class="project">
+          <div>
+            <p class="eyebrow">Uniswap v4 · ETHGlobal Online 2026</p>
+            <h3>Standby</h3>
+            <p>
+              <strong
+                >Future exact-output commitments backed by shared AMM
+                liquidity</strong
+              >
+            </p>
+          </div>
+          <div>
+            <p>
+              Standby began with a question: Can a liquidity pool commit to
+              delivering a specific output amount in the future while still
+              serving ordinary swaps? I designed and implemented a Uniswap v4
+              protocol that backs those commitments with shared pool liquidity.
+            </p>
+            <p>
+              The central design decision was to let ordinary pool activity
+              proceed as long as the remaining execution capacity could still
+              cover outstanding commitments. The hook checks that condition when
+              admitting new commitments and when evaluating pool activity. When
+              a commitment is exercised, the protocol enforces exact output and
+              verifies delivery to the beneficiary.
+            </p>
+            <p>
+              I tested the backing invariant and commitment lifecycle with
+              Foundry unit, fuzz, stateful invariant, and integration tests.
+              Independent reference calculations checked the core economic math.
+              I also ran the full commitment lifecycle on Base Sepolia.
+            </p>
+          </div>
+          <div class="links">
+            <a href="https://www.loom.com/share/4a40fa663c9d425da94f9ee9726d0fb9" target="_blank" rel="noopener noreferrer"
+              >Watch Demo Video</a
+            ><a
+              href="https://github.com/garykocsis/Standby"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Code and Specifications</a
+            >
+          </div>
+        </article>
+        <article class="project">
+          <div>
+            <p class="eyebrow">Atrium Uniswap v4 Hook Incubator</p>
+            <h3>RangeGuard</h3>
+            <p>
+              <strong
+                >Swap-fee-funded impermanent loss coverage for liquidity
+                providers</strong
+              >
+            </p>
+          </div>
+          <div>
+            <p>
+              I built RangeGuard during the Atrium Uniswap v4 Hook Incubator to
+              explore how a pool could fund capped impermanent loss coverage
+              through its own trading activity. The hook directs a portion of
+              swap fees into a coverage buffer. Eligible positions accrue
+              coverage while in range, and claims settle when liquidity is
+              withdrawn.
+            </p>
+            <p>
+              I used the Actual/365 Fixed day-count convention to make accrual
+              calculations reproducible. Reactive Network monitors tick-range
+              changes and supports periodic accrual checkpoints. I used Foundry
+              unit, fuzz, and invariant tests to check coverage accounting,
+              range boundaries, and withdrawal settlement.
+            </p>
+          </div>
+          <div class="links">
+            <a
+              href="https://range-guard.vercel.app/?demo=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Interactive Demo</a
+            ><a
+              href="https://www.youtube.com/watch?v=82_9mEh_POM"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch Demo Video</a
+            ><a
+              href="https://github.com/garykocsis/RangeGuard"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Code and Specifications</a
+            >
+          </div>
+        </article>
+      </section>
+      <section id="approach" class="split" aria-labelledby="approach-heading">
+        <h2 id="approach-heading">How I Build</h2>
+        <div>
+          <p>
+            Before writing Solidity, I define what the protocol owes each
+            participant, who can act, and which state changes are allowed. I
+            turn those rules into invariants and design tests that exercise them
+            across different sequences of actions.
+          </p>
+          <p>
+            One Standby test follows a commitment through three pool actions.
+            A compatible swap proceeds. A swap that would leave too little
+            capacity to cover the commitment reverts. The beneficiary can
+            then still receive the exact committed output. This sequence
+            checks that ordinary pool use can coexist with the commitment
+            and that the hook protects it until exercise.
+          </p>
+        </div>
+      </section>
+      <section class="split" aria-labelledby="experience-heading">
+        <h2 id="experience-heading">
+          Security and Financial Systems Experience
+        </h2>
+        <div class="experience">
+          <h3>Macro · Instruction Resident and Contributor</h3>
+          <p>
+            I reviewed student Solidity contracts for security and code quality,
+            documented potential findings in project-specific shadow specs, and
+            gave students feedback on how to improve their implementations.
+            Before joining as a resident, I completed the Macro Fellowship
+            Engineering Program and built an AMM, a DAO with signature-based
+            voting, and token fundraising contracts.
+          </p>
+          <div class="links">
+            <a
+              href="https://github.com/garykocsis/macro_student_audits"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Selected security reviews</a
+            ><a
+              href="https://github.com/garykocsis/0xmacroBootcamp"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Fellowship projects</a
+            >
+          </div>
+          <h3>JPMorgan Chase · Vice President</h3>
+          <p>
+            I managed the team developing conversion programs for a migration
+            of more than one million brokerage accounts. I wrote SQL to verify
+            mapped data across the source and destination systems. That work
+            shaped how I approach cutovers: define what must match and check
+            it before relying on the new system.
+          </p>
+          <h3>Bear Stearns · Associate Director</h3>
+          <p>
+            I worked on FIX order routing and direct exchange connectivity
+            for institutional trading. Supporting global trading around the
+            clock shaped how I think about reliability at system boundaries,
+            where an order passes from one system to another.
+          </p>
+          <h3>Education and training</h3>
+          <p>
+            B.S. in Applied Mathematics–Economics, Brown University · MBA,
+            DeSales University · Certificate in Advanced Computer Security,
+            Stanford Center for Professional Development · Token
+            Engineering Fundamentals, Token Engineering Academy ·
+            Uniswap Hook Incubator Program, Atrium Academy
+          </p>
+        </div>
+      </section>
+      <section id="contact" class="split" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Get in Touch</h2>
+        <div>
+          <p>
+            I’m open to Protocol Engineer and Smart Contract Engineer roles in
+            DeFi and on-chain infrastructure.
+          </p>
+          <div class="links"><a href="mailto:gkocsis99@gmail.com">Email</a><a href="https://linkedin.com/in/gary-kocsis-0256666/">LinkedIn</a><a href="https://github.com/garykocsis">GitHub</a></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
